@@ -1,0 +1,53 @@
+extends ../includes/layout
+
+block main-content
+  .navbar.navbar-inverse.navbar-fixed-top
+    .container
+      .navbar-header
+        a.navbar-brand(href="/") Home
+
+
+
+  div(ng-controller="MainCtrl")
+      h1 Blackjack
+      h3 {{$storage.playerName}}
+      h3 {{$storage.bank}}
+      div.getGameSet(ng-show="!gameStarted")
+        form
+          div.form-group
+              label  Name:
+              input(type= "text" ng-model="player.name" ng-hide="setName") Name:
+          div.form-group
+              label  Bet:
+              input(type="number" ng-model="player.bet") Bet:
+          div.form-group
+              label
+              button(class="btn btn-success" ng-click="startGame()" id="stgame" ) begin
+      div.row
+        div.col-md-5.col-md-offset-1
+          div.playerHan(ng-show="gameStarted")
+            h2 {{player.name}}
+            div(ng-repeat="hand in playerHands track by $index")
+              div.row
+                div(class="cardsInPlay" ng-repeat="card in hand.cards track by $index")
+                  div.col-md-1
+                    img(ng-src="../img/cards/{{card.imgLink}}")
+              div.blackjackCount
+                span {{hand.score}}
+              div.option-set(ng-show="splitCounter == $index")
+                button(class="btn btn-success" ng-show="!isBusted && !ceaseAction" ng-click="hitMe($index)" ng-disabled="ceaseAction") Hit me
+                button(class="btn btn-danger" ng-show="!isBusted && !ceaseAction" ng-click="stand($index)" ng-disabled="ceaseAction") Stand
+                button(class="btn btn-info" ng-show="CanDouble && !ceaseAction" ng-click="doubleDown(playerHands[$index].bet, $index)" ng-disabled="ceaseAction") Double
+                button(class="btn btn-warning" ng-show="playerHands[$index].isCanSplit && !ceaseAction" ng-click="split($index)" ng-disabled="ceaseAction") Split
+            div(ng-if="isSplitOn")
+              newSplitDeck
+        div.dealer-hand(ng-show="gameStarted")
+          div.col-md-4.col-md-offset-2
+            h2 Dealer
+            div.row
+              div(ng-repeat="card in dealerDraw track by $index"  class="ng-scope")
+                div.col-md-1
+                  img(ng-src="../img/cards/{{card.imgLink}}")
+            div.dealercount
+              span {{dealerScore}}
+

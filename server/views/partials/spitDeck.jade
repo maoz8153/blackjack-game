@@ -1,0 +1,12 @@
+div.row(ng-tranclude)
+  div(class="cardsInSplitDeck" ng-repeat="card in splitDeck track by $index")
+    div.col-md-1
+      img(ng-src="../img/cards/{{card.imgLink}}")
+div.blackjackCount
+  span {{playerScore}}
+div.option-set
+  button(ng-show="!isBusted && !ceaseActionSplit" ng-click="hitMe()" ng-disabled="ceaseActionSplit") Hit me
+  button(ng-show="!isBusted && !ceaseActionSplit" ng-click="stand()" ng-disabled="ceaseActionSplit") Stand
+  button(ng-show="CanDouble && !ceaseActionSplit" ng-click="doubleDown(player.bet)" ng-disabled="ceaseActionSplit") Double
+  button(ng-show="isCanSplit && !ceaseActionSplit" ng-click="split()" ng-disabled="ceaseActionSplit") Split
+

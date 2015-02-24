@@ -1,0 +1,14 @@
+extends ../index
+
+block content
+    .container
+      .jumbotron
+        h1 Blackjack
+        p Welcome to Blackjack
+
+      .row
+        div(ng-controller="MainCtrl")
+          h2 {{card}}
+          h3 {{player}}
+  footer.container.text-center
+    p maoz

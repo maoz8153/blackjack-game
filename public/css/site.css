@@ -1,0 +1,26 @@
+body {
+  padding-top: 61px;
+  background-color: #2b5204;
+  color: #000;
+  width: 90% !important;
+}
+.navbar-header a.navbar-brand {
+  margin-top: -15px;
+  margin-bottom: -20px;
+}
+.navbar-header a.navbar-brand h6 {
+  color: #ccc;
+}
+.option-set button {
+  font-family: "bello-pro", "Cooper STD", Georgia, serif !important;
+}
+#stgame {
+  margin-right: 10px;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+footer p {
+  border-top: 1px solid #d7e0e2;
+}
