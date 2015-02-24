@@ -37,14 +37,9 @@ blackjack.controller('MainCtrl', function($scope, Card, blackjackRules, $timeout
       $localStorage.playerName = $scope.player.name;
       $scope.gameStarted = true;
       var bet = $scope.player.bet;
-      var h1 = {
-          name : "5",
-          shap : "h",
-          imgLink : '_5h.png'
-      };
       $scope.playerHands[0].bet = bet;
-      $scope.playerHands[0].cards.push(h1);
-      $scope.playerHands[0].cards.push(h1);
+      $scope.playerHands[0].cards.push(ActionOption.getCard());
+      $scope.playerHands[0].cards.push(ActionOption.getCard());
       $scope.dealerDraw.push(ActionOption.getCard());
       var backCard = {
             name : "0",
